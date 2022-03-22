@@ -1,0 +1,46 @@
+package com.springboot.exception.utils;
+import org.springframework.http.HttpStatus;
+
+/**
+ * 异常响应实体类
+ */
+public enum ErrorCode {
+
+    //枚举可能出现的异常错误
+    RESOURCE_NOT_FOUND(1001, HttpStatus.NOT_FOUND, "未找到该资源"),
+    REQUEST_VALIDATION_FAILED(1002, HttpStatus.BAD_REQUEST, "请求数据格式验证失败");
+
+    //异常响应值
+    private final int code;
+
+    private final HttpStatus status;
+
+    private final String message;
+
+    ErrorCode(int code, HttpStatus status, String message) {
+        this.code = code;
+        this.status = status;
+        this.message = message;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return "ErrorCode{" +
+                "code=" + code +
+                ", status=" + status +
+                ", message='" + message + '\'' +
+                '}';
+    }
+}
